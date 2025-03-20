@@ -20,20 +20,9 @@ public class StringHashMap implements StringMap{
     public String get(String k) {
         // 1. Get the right bucket using key's hashcode
         int h = Math.abs(k.hashCode());
-<<<<<<< HEAD
         LinkedList<Entry> bucket = buckets[h % buckets.length];
         for(Entry e : bucket){
             if(e.key.equals(k)){
-                return e.value;
-            }
-        }
-=======
-        LinkedList<Entry> buck = buckets[h % buckets.length];
->>>>>>> upstream/main
-        // 2. Loop through the bucket looking for entry with matching key
-        for(Entry e: buck) {
-            //3. Return value for matching entry
-            if(e.key.equals(k)) {
                 return e.value;
             }
         }
