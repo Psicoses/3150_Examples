@@ -25,21 +25,27 @@ public class StringBST implements StringTree{
 
     // never pass a null node to rinsert
     private static boolean rInsert(Node n, String s){
-        if(n.value.compareTo(s) < 0){ //right
-           if(n.right == null){
-               n.right = new Node(s);
-               return true;
-           }else{
-               return rInsert(n.right, s);
-           }
-        }else{ //left
-            if(n.left == null){
+        int comp = s.compareTo(n.value);
+
+        if(comp < 0){ // left
+            if(n.left == null) {
                 n.left = new Node(s);
                 return true;
             }else{
-                return rInsert(n.right, s);
+                return rInsert(n.left, s);
             }
+        } else if (comp > 0){ // right
+             if(n.right == null){
+                 n.right = new Node(s);
+                 return true;
+             }else{
+                 return rInsert(n.right, s);
+             }
+
+        } else{ // contains already
+            return false;
         }
+
     }
 
     // add the string (if not already there)
